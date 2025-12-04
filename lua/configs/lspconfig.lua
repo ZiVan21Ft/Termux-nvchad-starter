@@ -9,12 +9,23 @@ local nvlsp = require "nvchad.configs.lspconfig"
 
 nvlsp.defaults()
 -- lsps with default config
+-- neovim version v0.9
+-- for _, lsp in ipairs(servers) do
+  -- lspconfig[lsp].setup {
+    -- on_attach = nvlsp.on_attach,
+    -- on_init = nvlsp.on_init,
+    -- capabilities = nvlsp.capabilities,
+  -- }
+-- end
+
+-- neovim version v0.11.4
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  lspconfig(lsp, {
+  -- lspconfig[lsp].setup {
     on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
-  }
+  })
 end
 
 -- configuring single server, example: typescript
